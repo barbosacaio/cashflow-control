@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/health", (request, response) => {
-  return response.json({ status: "ok" });
+  return response.json({ status: "ok >:D" });
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port ${port} >:D`);
 });
