@@ -30,25 +30,28 @@
 ## 🛠️ Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|---|---|
+
+| Technology                                                | Purpose                     |
+| --------------------------------------------------------- | --------------------------- |
 | [React](https://react.dev/) + [Vite](https://vitejs.dev/) | UI framework and build tool |
-| TypeScript | Static typing |
-| CSS Modules / Tailwind CSS | Styling |
-| [Recharts](https://recharts.org/) | Data visualization / charts |
+| TypeScript                                                | Static typing               |
+| CSS Modules / Tailwind CSS                                | Styling                     |
+| [Recharts](https://recharts.org/)                         | Data visualization / charts |
 
 ### Backend
-| Technology | Purpose |
-|---|---|
-| [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/) | REST API server |
-| TypeScript | Static typing |
-| [Prisma](https://www.prisma.io/) | ORM |
-| [PostgreSQL](https://www.postgresql.org/) | Relational database |
-| [Zod](https://zod.dev/) | Schema validation |
+
+| Technology                                                         | Purpose             |
+| ------------------------------------------------------------------ | ------------------- |
+| [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/) | REST API server     |
+| TypeScript                                                         | Static typing       |
+| [Prisma](https://www.prisma.io/)                                   | ORM                 |
+| [PostgreSQL](https://www.postgresql.org/)                          | Relational database |
+| [Zod](https://zod.dev/)                                            | Schema validation   |
 
 ### Infrastructure
-| Technology | Purpose |
-|---|---|
+
+| Technology                                         | Purpose                                |
+| -------------------------------------------------- | -------------------------------------- |
 | [Docker](https://www.docker.com/) + Docker Compose | Containerization and local environment |
 
 ---
@@ -98,23 +101,27 @@ cashflow-control/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/barbosacaio/cashflow-control.git
    cd cashflow-control
    ```
 
 2. **Set up environment variables**
+
    ```bash
    cp .env.example .env
    # Edit .env with your own values
    ```
 
 3. **Start the database with Docker**
+
    ```bash
    docker-compose up -d
    ```
 
 4. **Install dependencies and run migrations**
+
    ```bash
    # Backend
    cd server
@@ -127,6 +134,7 @@ cashflow-control/
    ```
 
 5. **Start the development servers**
+
    ```bash
    # Backend (from /server)
    npm run dev
@@ -161,16 +169,16 @@ JWT_SECRET=your_jwt_secret_here
 
 > Full API documentation coming soon.
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/auth/register` | Create a new user |
-| `POST` | `/auth/login` | Authenticate user |
-| `GET` | `/transactions` | List all transactions |
-| `POST` | `/transactions` | Create a transaction |
-| `PUT` | `/transactions/:id` | Update a transaction |
-| `DELETE` | `/transactions/:id` | Delete a transaction |
-| `GET` | `/categories` | List all categories |
-| `GET` | `/summary` | Get monthly summary |
+| Method   | Endpoint            | Description           |
+| -------- | ------------------- | --------------------- |
+| `POST`   | `/auth/register`    | Create a new user     |
+| `POST`   | `/auth/login`       | Authenticate user     |
+| `GET`    | `/transactions`     | List all transactions |
+| `POST`   | `/transactions`     | Create a transaction  |
+| `PUT`    | `/transactions/:id` | Update a transaction  |
+| `DELETE` | `/transactions/:id` | Delete a transaction  |
+| `GET`    | `/categories`       | List all categories   |
+| `GET`    | `/summary`          | Get monthly summary   |
 
 ---
 
@@ -179,6 +187,7 @@ JWT_SECRET=your_jwt_secret_here
 > Detailed ERD coming soon.
 
 Main entities:
+
 - **User** — authentication and profile
 - **Transaction** — income or expense record
 - **Category** — transaction category
@@ -231,10 +240,12 @@ This project is licensed under the [MIT License](./LICENSE).
 ## 👤 Authors
 
 **Maria Eduarda**
+
 - GitHub: [@itzmadu](https://github.com/itzmadu)
 - LinkedIn: [Maria Eduarda Ferraz de Oliveira](https://www.linkedin.com/in/maria-eduarda-ferraz-de-oliveira/)
 
 **Caio Barbosa**
+
 - GitHub: [@barbosacaio](https://github.com/barbosacaio)
 - LinkedIn: [Caio Henrique Barbosa](https://www.linkedin.com/in/barbosacaio/)
 
