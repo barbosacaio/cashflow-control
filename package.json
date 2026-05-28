@@ -1,5 +1,8 @@
 {
   "scripts": {
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:down:volumes": "docker-compose down -v",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write ."
   },
