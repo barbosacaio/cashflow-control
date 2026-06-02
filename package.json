@@ -4,7 +4,8 @@
     "docker:down": "docker-compose down",
     "docker:down:volumes": "docker-compose down -v",
     "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "lint": "npm run lint --prefix client && npm run lint --prefix server"
   },
   "devDependencies": {
     "prettier": "3.8.3"
