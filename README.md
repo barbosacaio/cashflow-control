@@ -107,61 +107,28 @@ cashflow-control/
    cd cashflow-control
    ```
 
-2. **Set up environment variables**
+2. **Set up environment variables on the server**
 
    ```bash
-   cp .env.example .env
    # Edit .env with your own values
+   cp server/.env.example server/.env
    ```
 
-3. **Start the database with Docker**
+3. **Install dependencies**
 
    ```bash
-   docker-compose up -d
-   ```
-
-4. **Install dependencies and run migrations**
-
-   ```bash
-   # Backend
-   cd server
    npm install
-   npx prisma migrate dev
-
-   # Frontend
-   cd ../client
-   npm install
+   npm install --prefix client
+   npm install --prefix server
    ```
 
-5. **Start the development servers**
+4. **Start the Docker containers**
 
    ```bash
-   # Backend (from /server)
-   npm run dev
-
-   # Frontend (from /client)
-   npm run dev
+   npm run docker:up
    ```
 
-6. Open [http://localhost:5173](http://localhost:5173) in your browser.
-
----
-
-## 🔑 Environment Variables
-
-Create a `.env` file in the root of `/server` based on `.env.example`:
-
-```env
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/cashflow_control"
-
-# Server
-PORT=3333
-NODE_ENV=development
-
-# Auth (fill in when applicable)
-JWT_SECRET=your_jwt_secret_here
-```
+5. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
@@ -213,7 +180,7 @@ npm run test
 
 ## 🗺️ Roadmap
 
-- [ ] Project setup (Vite + Express + Docker)
+- [x] Project setup (Vite + Express + Docker)
 - [ ] Database modeling and migrations
 - [ ] Authentication (JWT)
 - [ ] Transaction CRUD
