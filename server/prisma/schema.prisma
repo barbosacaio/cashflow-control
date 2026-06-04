@@ -24,6 +24,7 @@ model Transaction {
   id         String   @id @default(cuid())
   amount      Int
   description String
+  type       TransactionType
   userId      String
   categoryId  String
   updatedAt   DateTime @updatedAt
@@ -44,4 +45,9 @@ model Category {
   transactions Transaction[]
 
   @@map("categories")
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
 }
