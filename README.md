@@ -151,13 +151,49 @@ cashflow-control/
 
 ## 🗄️ Database Schema
 
-> Detailed ERD coming soon.
+- **User**:
 
-Main entities:
+  | Column        | Type          |
+  | ------------- | ------------- |
+  | id            | String        |
+  | name          | String        |
+  | email         | String        |
+  | hash_password | String        |
+  | updatedAt     | DateTime      |
+  | createdAt     | DateTime      |
+  | transactions  | Transaction[] |
 
-- **User** — authentication and profile
-- **Transaction** — income or expense record
-- **Category** — transaction category
+- **Transaction**:
+
+  | Column      | Type            |
+  | ----------- | --------------- |
+  | id          | String          |
+  | amount      | Int             |
+  | description | String          |
+  | type        | TransactionType |
+  | userId      | String          |
+  | categoryId  | String          |
+  | updatedAt   | DateTime        |
+  | createdAt   | DateTime        |
+  | user        | User            |
+  | category    | Category        |
+
+- **Category**:
+
+  | Column       | Type          |
+  | ------------ | ------------- |
+  | id           | String        |
+  | name         | String        |
+  | updatedAt    | DateTime      |
+  | createdAt    | DateTime      |
+  | transactions | Transaction[] |
+
+- **TransactionType (enum)**:
+
+  | Value   |
+  | ------- |
+  | INCOME  |
+  | EXPENSE |
 
 ---
 
@@ -181,7 +217,7 @@ npm run test
 ## 🗺️ Roadmap
 
 - [x] Project setup (Vite + Express + Docker)
-- [ ] Database modeling and migrations
+- [x] Database modeling and migrations
 - [ ] Authentication (JWT)
 - [ ] Transaction CRUD
 - [ ] Categories
