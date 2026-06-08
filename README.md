@@ -17,7 +17,7 @@
 
 ## ✨ Features
 
-- [ ] User authentication (sign up / sign in / sign out)
+- [x] User authentication (sign up / sign in / sign out)
 - [ ] Add, edit, and delete income and expense transactions
 - [ ] Categorize transactions (food, housing, salary, etc.)
 - [ ] Monthly summary dashboard
@@ -218,7 +218,7 @@ npm run test
 
 - [x] Project setup (Vite + Express + Docker)
 - [x] Database modeling and migrations
-- [ ] Authentication (JWT)
+- [x] Authentication (JWT)
 - [ ] Transaction CRUD
 - [ ] Categories
 - [ ] Dashboard and charts
