@@ -1,8 +1,13 @@
 import type { Request, Response } from 'express';
-import { createCategorySchema } from '../schemas/category.schema.js';
+import {
+  createCategorySchema,
+  categoryParamsSchema,
+  editCategorySchema,
+} from '../schemas/category.schema.js';
 import {
   createCategory,
   listCategories,
+  editCategory,
 } from '../services/category.service.js';
 import { AppError } from '../errors/AppError.js';
 import { z } from 'zod';
@@ -33,5 +38,27 @@ export async function listCategoriesController(req: Request, res: Response) {
   } catch (error) {
     console.error(error);
     throw new AppError('Error listing categories', 500);
+  }
+}
+
+export async function editCategoryController(req: Request, res: Response) {
+  const parsedBody = editCategorySchema.safeParse(req.body);
+  const parsedParams = categoryParamsSchema.safeParse(req.params);
+  if (!parsedBody.success) {
+    throw new AppError(z.prettifyError(parsedBody.error), 400);
+  }
+  if (!parsedParams.success) {
+    throw new AppError(z.prettifyError(parsedParams.error), 400);
+  }
+
+  try {
+    const userId = (req.user as JwtPayload).userId;
+    const categoryId = parsedParams.data.id;
+    const { name } = parsedBody.data;
+    const result = await editCategory(categoryId, userId, name);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    throw new AppError('Error editing category', 500);
   }
 }

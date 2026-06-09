@@ -1,4 +1,5 @@
 import { prisma } from './prisma.js';
+import { AppError } from '../errors/AppError.js';
 
 export async function createCategory(userId: string, name: string) {
   const category = await prisma.category.create({
@@ -19,4 +20,25 @@ export async function listCategories(userId: string) {
   });
 
   return categories;
+}
+
+export async function editCategory(
+  categoryId: string,
+  userId: string,
+  name: string,
+) {
+  const category = await prisma.category.findUnique({
+    where: { id: categoryId },
+  });
+
+  if (!category || category.userId !== userId) {
+    throw new AppError('Category not found', 404);
+  }
+
+  const updatedCategory = await prisma.category.update({
+    where: { id: categoryId },
+    data: { name },
+  });
+
+  return updatedCategory;
 }
