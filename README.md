@@ -136,16 +136,17 @@ cashflow-control/
 
 > Full API documentation coming soon.
 
-| Method   | Endpoint            | Description           |
-| -------- | ------------------- | --------------------- |
-| `POST`   | `/auth/register`    | Create a new user     |
-| `POST`   | `/auth/login`       | Authenticate user     |
-| `GET`    | `/transactions`     | List all transactions |
-| `POST`   | `/transactions`     | Create a transaction  |
-| `PUT`    | `/transactions/:id` | Update a transaction  |
-| `DELETE` | `/transactions/:id` | Delete a transaction  |
-| `GET`    | `/categories`       | List all categories   |
-| `GET`    | `/summary`          | Get monthly summary   |
+| Method   | Endpoint            | Description              |
+| -------- | ------------------- | ------------------------ |
+| `POST`   | `/auth/register`    | Create a new user        |
+| `POST`   | `/auth/login`       | Authenticate user        |
+| `GET`    | `/transactions`     | List all transactions    |
+| `POST`   | `/transactions`     | Create a transaction     |
+| `PUT`    | `/transactions/:id` | Update a transaction     |
+| `DELETE` | `/transactions/:id` | Delete a transaction     |
+| `GET`    | `/categories`       | List all categories      |
+| `POST`   | `/categories`       | Create a custom category |
+| `GET`    | `/summary`          | Get monthly summary      |
 
 ---
 
