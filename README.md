@@ -146,6 +146,8 @@ cashflow-control/
 | `DELETE` | `/transactions/:id` | Delete a transaction     |
 | `GET`    | `/categories`       | List all categories      |
 | `POST`   | `/categories`       | Create a custom category |
+| `PUT`    | `/categories/:id`   | Edit a custom category   |
+| `DELETE` | `/categories/:id`   | Delete a custom category |
 | `GET`    | `/summary`          | Get monthly summary      |
 
 ---
