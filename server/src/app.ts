@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { errorMiddleware } from './middlewares/error.middleware.js';
 import { authRoutes } from './routes/auth.routes.js';
+import { categoryRoutes } from './routes/category.routes.js';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get('/health', (request, response) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/categories', categoryRoutes);
 
 app.use(errorMiddleware);
 

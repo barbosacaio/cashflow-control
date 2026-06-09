@@ -15,6 +15,7 @@ model User {
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 
+  categories Category[]
   transactions Transaction[]
 
   @@map("users")
@@ -39,10 +40,12 @@ model Transaction {
 model Category {
   id          String   @id @default(cuid())
   name        String
+  userId      String
   updatedAt   DateTime @updatedAt
   createdAt   DateTime @default(now())
 
   transactions Transaction[]
+  user         User     @relation(fields: [userId], references: [id])
 
   @@map("categories")
 }

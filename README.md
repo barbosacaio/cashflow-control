@@ -17,9 +17,9 @@
 
 ## ✨ Features
 
-- [ ] User authentication (sign up / sign in / sign out)
+- [x] User authentication (sign up / sign in / sign out)
 - [ ] Add, edit, and delete income and expense transactions
-- [ ] Categorize transactions (food, housing, salary, etc.)
+- [x] Categorize transactions (food, housing, salary, etc.)
 - [ ] Monthly summary dashboard
 - [ ] Cash flow visualization with charts
 - [ ] Filter transactions by date range and category
@@ -136,16 +136,19 @@ cashflow-control/
 
 > Full API documentation coming soon.
 
-| Method   | Endpoint            | Description           |
-| -------- | ------------------- | --------------------- |
-| `POST`   | `/auth/register`    | Create a new user     |
-| `POST`   | `/auth/login`       | Authenticate user     |
-| `GET`    | `/transactions`     | List all transactions |
-| `POST`   | `/transactions`     | Create a transaction  |
-| `PUT`    | `/transactions/:id` | Update a transaction  |
-| `DELETE` | `/transactions/:id` | Delete a transaction  |
-| `GET`    | `/categories`       | List all categories   |
-| `GET`    | `/summary`          | Get monthly summary   |
+| Method   | Endpoint            | Description              |
+| -------- | ------------------- | ------------------------ |
+| `POST`   | `/auth/register`    | Create a new user        |
+| `POST`   | `/auth/login`       | Authenticate user        |
+| `GET`    | `/transactions`     | List all transactions    |
+| `POST`   | `/transactions`     | Create a transaction     |
+| `PUT`    | `/transactions/:id` | Update a transaction     |
+| `DELETE` | `/transactions/:id` | Delete a transaction     |
+| `GET`    | `/categories`       | List all categories      |
+| `POST`   | `/categories`       | Create a custom category |
+| `PUT`    | `/categories/:id`   | Edit a custom category   |
+| `DELETE` | `/categories/:id`   | Delete a custom category |
+| `GET`    | `/summary`          | Get monthly summary      |
 
 ---
 
@@ -161,6 +164,7 @@ cashflow-control/
   | hash_password | String        |
   | updatedAt     | DateTime      |
   | createdAt     | DateTime      |
+  | categories    | Category[]    |
   | transactions  | Transaction[] |
 
 - **Transaction**:
@@ -184,6 +188,7 @@ cashflow-control/
   | ------------ | ------------- |
   | id           | String        |
   | name         | String        |
+  | userId       | String        |
   | updatedAt    | DateTime      |
   | createdAt    | DateTime      |
   | transactions | Transaction[] |
@@ -218,9 +223,9 @@ npm run test
 
 - [x] Project setup (Vite + Express + Docker)
 - [x] Database modeling and migrations
-- [ ] Authentication (JWT)
+- [x] Authentication (JWT)
 - [ ] Transaction CRUD
-- [ ] Categories
+- [x] Categories
 - [ ] Dashboard and charts
 - [ ] Input validation with Zod
 - [ ] Unit tests
