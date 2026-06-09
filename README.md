@@ -162,6 +162,7 @@ cashflow-control/
   | hash_password | String        |
   | updatedAt     | DateTime      |
   | createdAt     | DateTime      |
+  | categories    | Category[]    |
   | transactions  | Transaction[] |
 
 - **Transaction**:
@@ -185,6 +186,7 @@ cashflow-control/
   | ------------ | ------------- |
   | id           | String        |
   | name         | String        |
+  | userId       | String        |
   | updatedAt    | DateTime      |
   | createdAt    | DateTime      |
   | transactions | Transaction[] |
