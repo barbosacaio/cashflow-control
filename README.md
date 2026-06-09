@@ -19,7 +19,7 @@
 
 - [x] User authentication (sign up / sign in / sign out)
 - [ ] Add, edit, and delete income and expense transactions
-- [ ] Categorize transactions (food, housing, salary, etc.)
+- [x] Categorize transactions (food, housing, salary, etc.)
 - [ ] Monthly summary dashboard
 - [ ] Cash flow visualization with charts
 - [ ] Filter transactions by date range and category
@@ -225,7 +225,7 @@ npm run test
 - [x] Database modeling and migrations
 - [x] Authentication (JWT)
 - [ ] Transaction CRUD
-- [ ] Categories
+- [x] Categories
 - [ ] Dashboard and charts
 - [ ] Input validation with Zod
 - [ ] Unit tests
