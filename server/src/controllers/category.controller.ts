@@ -8,6 +8,7 @@ import {
   createCategory,
   listCategories,
   editCategory,
+  deleteCategory,
 } from '../services/category.service.js';
 import { AppError } from '../errors/AppError.js';
 import { z } from 'zod';
@@ -60,5 +61,22 @@ export async function editCategoryController(req: Request, res: Response) {
   } catch (error) {
     console.error(error);
     throw new AppError('Error editing category', 500);
+  }
+}
+
+export async function deleteCategoryController(req: Request, res: Response) {
+  const parsedParams = categoryParamsSchema.safeParse(req.params);
+  if (!parsedParams.success) {
+    throw new AppError(z.prettifyError(parsedParams.error), 400);
+  }
+
+  try {
+    const userId = (req.user as JwtPayload).userId;
+    const categoryId = parsedParams.data.id;
+    const result = await deleteCategory(categoryId, userId);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    throw new AppError('Error deleting category', 500);
   }
 }

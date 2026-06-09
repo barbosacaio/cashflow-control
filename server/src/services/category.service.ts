@@ -42,3 +42,19 @@ export async function editCategory(
 
   return updatedCategory;
 }
+
+export async function deleteCategory(categoryId: string, userId: string) {
+  const category = await prisma.category.findUnique({
+    where: { id: categoryId },
+  });
+
+  if (!category || category.userId !== userId) {
+    throw new AppError('Category not found', 404);
+  }
+
+  const deletedCategory = await prisma.category.delete({
+    where: { id: categoryId },
+  });
+
+  return deletedCategory;
+}
