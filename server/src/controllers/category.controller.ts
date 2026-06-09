@@ -1,6 +1,9 @@
 import type { Request, Response } from 'express';
 import { createCategorySchema } from '../schemas/category.schema.js';
-import { createCategory } from '../services/category.service.js';
+import {
+  createCategory,
+  listCategories,
+} from '../services/category.service.js';
 import { AppError } from '../errors/AppError.js';
 import { z } from 'zod';
 import type { JwtPayload } from 'jsonwebtoken';
@@ -19,5 +22,16 @@ export async function createCategoryController(req: Request, res: Response) {
   } catch (error) {
     console.error(error);
     throw new AppError('Error creating category', 500);
+  }
+}
+
+export async function listCategoriesController(req: Request, res: Response) {
+  try {
+    const userId = (req.user as JwtPayload).userId;
+    const result = await listCategories(userId);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    throw new AppError('Error listing categories', 500);
   }
 }

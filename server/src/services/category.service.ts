@@ -10,3 +10,13 @@ export async function createCategory(userId: string, name: string) {
 
   return category;
 }
+
+export async function listCategories(userId: string) {
+  const categories = await prisma.category.findMany({
+    where: {
+      OR: [{ userId: { equals: userId } }, { userId: { equals: '1' } }],
+    },
+  });
+
+  return categories;
+}
