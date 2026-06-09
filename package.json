@@ -1,8 +1,11 @@
 {
   "scripts": {
     "docker:up": "docker-compose up -d",
+    "docker:up:build": "docker-compose up -d --build",
     "docker:down": "docker-compose down",
     "docker:down:volumes": "docker-compose down -v",
+    "docker:restart": "npm run docker:down && npm run docker:up",
+    "docker:restart:volumes": "npm run docker:down:volumes && npm run docker:up:build",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "lint": "npm run lint --prefix client && npm run lint --prefix server"
