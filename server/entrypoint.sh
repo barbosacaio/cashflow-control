@@ -7,4 +7,5 @@ until npx prisma migrate deploy 2>&1 | grep -v "connection"; do
 done
 
 npx prisma generate
+npx prisma db seed
 npm run dev
