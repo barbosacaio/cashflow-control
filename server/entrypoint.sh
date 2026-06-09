@@ -6,4 +6,5 @@ until npx prisma migrate deploy 2>&1 | grep -v "connection"; do
   sleep 2
 done
 
+npx prisma generate
 npm run dev
