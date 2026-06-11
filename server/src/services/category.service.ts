@@ -17,6 +17,7 @@ export async function listCategories(userId: string) {
     where: {
       OR: [{ userId: { equals: userId } }, { userId: { equals: '1' } }],
     },
+    orderBy: { name: 'asc' },
   });
 
   return categories;
