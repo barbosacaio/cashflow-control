@@ -1,14 +1,8 @@
 import type { Request, Response } from 'express';
-import {
-  createTransactionSchema,
-  // categoryParamsSchema,
-  // editCategorySchema,
-} from '../schemas/transaction.schema.js';
+import { createTransactionSchema } from '../schemas/transaction.schema.js';
 import {
   createTransaction,
-  // listCategories,
-  // editCategory,
-  // deleteCategory,
+  listTransactions,
 } from '../services/transaction.service.js';
 import { AppError } from '../errors/AppError.js';
 import { z } from 'zod';
@@ -34,5 +28,16 @@ export async function createTransactionController(req: Request, res: Response) {
   } catch (error) {
     console.error(error);
     throw new AppError('Error creating transaction', 500);
+  }
+}
+
+export async function listTransactionsController(req: Request, res: Response) {
+  try {
+    const userId = (req.user as JwtPayload).userId;
+    const transactions = await listTransactions(userId);
+    res.json(transactions);
+  } catch (error) {
+    console.error(error);
+    throw new AppError('Error listing transactions', 500);
   }
 }

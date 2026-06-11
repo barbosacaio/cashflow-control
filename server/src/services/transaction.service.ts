@@ -20,3 +20,15 @@ export async function createTransaction(
 
   return transaction;
 }
+
+export async function listTransactions(userId: string) {
+  const transactions = await prisma.transaction.findMany({
+    where: { userId },
+    orderBy: { createdAt: 'desc' },
+    include: {
+      category: true,
+    },
+  });
+
+  return transactions;
+}
