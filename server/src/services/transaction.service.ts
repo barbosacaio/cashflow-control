@@ -1,5 +1,5 @@
 import { prisma } from './prisma.js';
-import type { TransactionType } from '../../generated/prisma/client.js';
+import type { Prisma, TransactionType } from '../../generated/prisma/client.js';
 
 export async function createTransaction(
   userId: string,
@@ -31,4 +31,33 @@ export async function listTransactions(userId: string) {
   });
 
   return transactions;
+}
+
+export async function editTransaction(
+  userId: string,
+  transactionId: string,
+  data: {
+    description?: string | undefined;
+    amount?: number | undefined;
+    type?: TransactionType | undefined;
+    categoryId?: string | undefined;
+  },
+) {
+  const updateData: Prisma.TransactionUncheckedUpdateInput = {};
+
+  if (data.description !== undefined) updateData.description = data.description;
+  if (data.type !== undefined) updateData.type = data.type;
+  if (data.categoryId !== undefined) updateData.categoryId = data.categoryId;
+  if (data.amount !== undefined)
+    updateData.amount = Math.round(data.amount * 100);
+
+  const transaction = await prisma.transaction.update({
+    where: {
+      id: transactionId,
+      userId,
+    },
+    data: updateData,
+  });
+
+  return transaction;
 }

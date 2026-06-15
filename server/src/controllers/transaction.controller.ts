@@ -1,8 +1,13 @@
 import type { Request, Response } from 'express';
-import { createTransactionSchema } from '../schemas/transaction.schema.js';
+import {
+  createTransactionSchema,
+  transactionParamsSchema,
+  editTransactionSchema,
+} from '../schemas/transaction.schema.js';
 import {
   createTransaction,
   listTransactions,
+  editTransaction,
 } from '../services/transaction.service.js';
 import { AppError } from '../errors/AppError.js';
 import { z } from 'zod';
@@ -39,5 +44,30 @@ export async function listTransactionsController(req: Request, res: Response) {
   } catch (error) {
     console.error(error);
     throw new AppError('Error listing transactions', 500);
+  }
+}
+
+export async function editTransactionController(req: Request, res: Response) {
+  const parsedBody = editTransactionSchema.safeParse(req.body);
+  const parsedParams = transactionParamsSchema.safeParse(req.params);
+
+  if (!parsedBody.success) {
+    throw new AppError(z.prettifyError(parsedBody.error), 400);
+  }
+
+  if (!parsedParams.success) {
+    throw new AppError(z.prettifyError(parsedParams.error), 400);
+  }
+
+  try {
+    const userId = (req.user as JwtPayload).userId;
+    const transactionId = parsedParams.data.id;
+    const data = parsedBody.data;
+
+    const result = await editTransaction(userId, transactionId, data);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    throw new AppError('Error editing transaction', 500);
   }
 }
