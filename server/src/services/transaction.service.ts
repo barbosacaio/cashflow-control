@@ -61,3 +61,14 @@ export async function editTransaction(
 
   return transaction;
 }
+
+export async function deleteTransaction(userId: string, transactionId: string) {
+  const transaction = await prisma.transaction.delete({
+    where: {
+      id: transactionId,
+      userId,
+    },
+  });
+
+  return transaction;
+}

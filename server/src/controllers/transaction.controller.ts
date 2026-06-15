@@ -8,6 +8,7 @@ import {
   createTransaction,
   listTransactions,
   editTransaction,
+  deleteTransaction,
 } from '../services/transaction.service.js';
 import { AppError } from '../errors/AppError.js';
 import { z } from 'zod';
@@ -69,5 +70,24 @@ export async function editTransactionController(req: Request, res: Response) {
   } catch (error) {
     console.error(error);
     throw new AppError('Error editing transaction', 500);
+  }
+}
+
+export async function deleteTransactionController(req: Request, res: Response) {
+  const parsed = transactionParamsSchema.safeParse(req.params);
+
+  if (!parsed.success) {
+    throw new AppError(z.prettifyError(parsed.error), 400);
+  }
+
+  try {
+    const userId = (req.user as JwtPayload).userId;
+    const transactionId = parsed.data.id;
+
+    await deleteTransaction(userId, transactionId);
+    res.status(204).send();
+  } catch (error) {
+    console.error(error);
+    throw new AppError('Error deleting transaction', 500);
   }
 }
