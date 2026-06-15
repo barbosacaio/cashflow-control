@@ -18,7 +18,7 @@
 ## ✨ Features
 
 - [x] User authentication (sign up / sign in / sign out)
-- [ ] Add, edit, and delete income and expense transactions
+- [x] Add, edit, and delete income and expense transactions
 - [x] Categorize transactions (food, housing, salary, etc.)
 - [ ] Monthly summary dashboard
 - [ ] Cash flow visualization with charts
@@ -224,10 +224,10 @@ npm run test
 - [x] Project setup (Vite + Express + Docker)
 - [x] Database modeling and migrations
 - [x] Authentication (JWT)
-- [ ] Transaction CRUD
+- [x] Transaction CRUD
 - [x] Categories
 - [ ] Dashboard and charts
-- [ ] Input validation with Zod
+- [x] Input validation with Zod
 - [ ] Unit tests
 - [ ] Deploy (frontend + backend)
 
