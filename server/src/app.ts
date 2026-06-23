@@ -4,6 +4,7 @@ import { errorMiddleware } from './middlewares/error.middleware.js';
 import { authRoutes } from './routes/auth.routes.js';
 import { categoryRoutes } from './routes/category.routes.js';
 import { transactionRoutes } from './routes/transaction.routes.js';
+import { summaryRoute } from './routes/summary.routes.js';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get('/health', (request, response) => {
 app.use('/auth', authRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/transactions', transactionRoutes);
+app.use('/summary', summaryRoute);
 
 app.use(errorMiddleware);
 
