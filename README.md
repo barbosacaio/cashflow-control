@@ -20,7 +20,7 @@
 - [x] User authentication (sign up / sign in / sign out)
 - [x] Add, edit, and delete income and expense transactions
 - [x] Categorize transactions (food, housing, salary, etc.)
-- [ ] Monthly summary dashboard
+- [x] Monthly summary dashboard
 - [ ] Cash flow visualization with charts
 - [ ] Filter transactions by date range and category
 - [ ] Responsive design for mobile and desktop
